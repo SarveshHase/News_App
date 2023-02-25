@@ -21,13 +21,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sports</a>
+                        <a class="nav-link" id="sports" href="">Sports</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Weather</a>
+                        <a class="nav-link" id="weather" href="">Weather</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -54,7 +54,7 @@
         crossorigin="anonymous"></script>
 
     <script>
-        let currentQuery = "sports";
+        let currentQuery = "stars";
         let currentPage = 1;
         const fetchNews = async (page, q) => {
             console.log(`Fetching News for ${q}, Page Number: ${page}`);
@@ -110,6 +110,18 @@
         next.addEventListener("click", (e) => {
             e.preventDefault();
             currentPage = currentPage + 1;
+            fetchNews(currentPage, currentQuery);
+        });
+
+        sports.addEventListener("click", (e)=>{
+            e.preventDefault();
+            currentQuery = "sports";
+            fetchNews(currentPage, currentQuery);
+        });
+
+        weather.addEventListener("click", (e)=>{
+            e.preventDefault();
+            currentQuery = "weather";
             fetchNews(currentPage, currentQuery);
         });
 
